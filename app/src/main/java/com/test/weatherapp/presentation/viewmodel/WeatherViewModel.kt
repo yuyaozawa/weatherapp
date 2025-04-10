@@ -103,4 +103,8 @@ class WeatherViewModel @Inject constructor(
             }
         }
     }
+
+    fun setError(message: String) {
+        _forecastError.value = message
+    }
 }

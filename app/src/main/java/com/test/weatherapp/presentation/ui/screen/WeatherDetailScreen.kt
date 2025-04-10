@@ -39,13 +39,14 @@ import kotlin.math.roundToInt
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun WeatherDetailScreen(
-    cityInfo: CityDisplayInfo?,  // CityDisplayInfo を受け取る（null 許可）
+    cityInfo: CityDisplayInfo?,
     weatherViewModel: WeatherViewModel = hiltViewModel()
 ) {
     LaunchedEffect(cityInfo) {
         when {
             cityInfo == null -> {
-                // 必要な情報が得られなかった場合の処理（例: エラーメッセージ表示）
+                // 必要な情報が得られなかった場合の処理
+                weatherViewModel.setError("必要な都市情報が取得できませんでした。")
             }
 
             cityInfo.queryName == "current_location" -> {
