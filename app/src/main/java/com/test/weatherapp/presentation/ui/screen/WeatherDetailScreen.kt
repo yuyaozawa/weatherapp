@@ -22,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -77,6 +78,7 @@ fun WeatherDetailScreen(
             style = MaterialTheme.typography.headlineSmall.copy(fontSize = 40.sp)
         )
         Spacer(modifier = Modifier.height(30.dp))
+
         when {
             currentTemp != null -> {
 
@@ -104,7 +106,9 @@ fun WeatherDetailScreen(
                 )
             }
         }
+
         Spacer(modifier = Modifier.height(16.dp))
+
         Text(
             text = "週間天気予報",
             style = MaterialTheme.typography.headlineSmall
@@ -176,7 +180,7 @@ fun WeatherDetailScreen(
                                     Column(
                                         modifier = Modifier
                                             .background(
-                                                color = MaterialTheme.colorScheme.surfaceVariant,
+                                                color = Color(0xFFA0A0A0),
                                                 shape = RoundedCornerShape(8.dp)
                                             )
                                             .padding(4.dp),
@@ -192,7 +196,7 @@ fun WeatherDetailScreen(
                                         // 時間表示
                                         Text(
                                             text = formattedTime,
-                                            style = MaterialTheme.typography.bodyMedium
+                                            style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
                                         )
                                         // 天気アイコン表示（Coil の AsyncImage を利用）
                                         AsyncImage(
@@ -207,7 +211,7 @@ fun WeatherDetailScreen(
                                             text = "${forecastItem.main.temp.roundToInt()}°",
                                             modifier = Modifier.fillMaxWidth(),
                                             textAlign = TextAlign.Center,
-                                            style = MaterialTheme.typography.bodyMedium
+                                            style = MaterialTheme.typography.bodyMedium.copy(color = Color.Black)
                                         )
                                     }
                                 }
